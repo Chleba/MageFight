@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Mage Fight</title>
+	</head>
+	<body>
+
+		<style>
+			html, body 		{ background:#000; color:#FFF; }
+			canvas 			{ border:5px solid #FFF; }
+			#canvasMain 				{ }
+			#canvasMain .spellButton 	{ display:inline-block; }
+			.startScreen	{ top:25%; border:2px dashed #333; padding:15px; width:600px; text-align:center; position:absolute; }
+			.startScreen label,
+			.startScreen input 	{ display: inline-block; }
+		</style>
+
+		<!-- libraries -->
+		<script type="text/javascript" src="./js/lib/jak.js"></script>
+		<script type="text/javascript" src="./js/lib/timekeeper.js"></script>
+		<script type="text/javascript" src="./js/lib/util.js"></script>
+		<script type="text/javascript" src="./js/lib/Stats.js"></script>
+		<script type="text/javascript" src="./js/lib/particles1.js"></script>
+		<script type="text/javascript" src="./js/lib/sprites.js"></script>
+
+		<!-- Animation maps -->
+		<script type="text/javascript" src="./js/json/wizspell.js"></script>
+		<script type="text/javascript" src="./js/json/wizeasy.js"></script>
+		<script type="text/javascript" src="./js/json/wizkick.js"></script>
+
+		<!-- game files -->
+		<script type="text/javascript" src="./js/magefight.js"></script>
+		<script type="text/javascript" src="./js/start.js"></script>
+		<script type="text/javascript" src="./js/spells.js"></script>
+		<script type="text/javascript" src="./js/wizard.js"></script>
+		<script type="text/javascript" src="./js/socket.js"></script>
+
+		<!-- spells -->
+		<script type="text/javascript" src="./js/spells/firebolt.js"></script>
+		<script type="text/javascript" src="./js/spells/lightning.js"></script>
+		<script type="text/javascript" src="./js/spells/shield.js"></script>
+		
+		<div id="page">
+			<div id="canvasMain"></div>
+			
+			<script type="text/javascript">
+				var mss = new MageFight.StartScreen();
+				//var mf = new MageFight.Dungeon('canvasMain', {});
+			</script>
+
+		</div>
+	</body>
+</html>

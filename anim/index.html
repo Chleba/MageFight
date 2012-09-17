@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Magefight animations</title>
+	</head>
+	<body>
+
+		<style>
+		</style>
+
+		<script type="text/javascript" src="../js/Stats.js"></script>
+		<script type="text/javascript" src="../js/jak.js"></script>
+		<script type="text/javascript" src="../js/timekeeper.js"></script>
+        <script type="text/javascript" src="../js/json/wizspell.js"></script>
+        <script type="text/javascript" src="../js/sprites.js"></script>
+
+		<div id="page">
+			<div id="canvasMain">
+				<canvas id="canvas" width="500" height="500"></canvas>
+			</div>
+			
+			<script type="text/javascript">
+				function mageSprite(){
+					// fps count
+					this.Stats = new Stats();
+					this.Stats.getDomElement().style.position = 'absolute';
+					this.Stats.getDomElement().style.left = '0px';
+					this.Stats.getDomElement().style.top = '0px';
+					document.body.appendChild( this.Stats.getDomElement() );
+
+					this.SPRITE = {
+		        		scale : 1.0,
+		        		start : new Date().getTime(),
+		        		jsonMap : JSONWizspell
+		        	}
+		            this.domcanvas = JAK.gel('canvas');
+					this.canvas = this.domcanvas.getContext('2d');
+					this.sprites = [];
+
+					this.addSprites();
+										
+					this.canvasSize = { w : this.domcanvas.width, h : this.domcanvas.height }
+
+					this.timekeeper = JAK.Timekeeper.getInstance();
+					this.timekeeper.addListener(this, '_tick', 1);
+					//this._tick();
+				};
+				mageSprite.prototype.addSprites = function(){
+					// mage
+					this.sprites.push(new Sprite(this.canvas, this.SPRITE));
+				};
+				mageSprite.prototype._tick = function(){
+					this.Stats.update();
+					// clear
+					this.canvas.clearRect(0, 0, this.canvasSize.w, this.canvasSize.h);
+					this.canvas.fillStyle = '#000';
+					this.canvas.fillRect(0,0,this.canvasSize.w, this.canvasSize.h);
+					// draw
+					for(var i=0;i<this.sprites.length;i++){
+						this.sprites[i].draw({ x : 80,  y : 80 });
+					}
+				};
+				new mageSprite();
+
+			</script>
+			
+		</div>
+	</body>
+</html>
